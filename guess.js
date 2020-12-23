@@ -7,7 +7,7 @@ class NotesDrawer {
     // Create an SVG renderer and attach it to the DIV element named "boo".
     var div = document.getElementById("notescanvas")
     var renderer = new Vex.Flow.Renderer(div, Vex.Flow.Renderer.Backends.SVG);
-    
+
     // Configure the rendering context.
     renderer.resize(500, 200);
     this.context = renderer.getContext();
@@ -26,10 +26,10 @@ class NotesDrawer {
 
     // Create a stave of width 400 at position 10, 40 on the canvas.
     var stave = new Vex.Flow.Stave(10, 40, 100);
-    
+
     // Add a clef and time signature.
     stave.addClef("treble");//.addTimeSignature("2/4");
-    
+
     // Connect it to the rendering context and draw!
     stave.setContext(this.context).draw();
 
@@ -39,19 +39,19 @@ class NotesDrawer {
       if (note[1] != '/') stave_note.addAccidental(0, new Vex.Flow.Accidental(note[1]));
       return stave_note;
     }
-  
+
     var notes = [
       createNote(note1),
       createNote(note2),
     ];
-    
+
     // Create a voice in 4/4 and add above notes
     var voice = new Vex.Flow.Voice({num_beats: 2,  beat_value: 4});
     voice.addTickables(notes);
-    
+
     // Format and justify the notes to 400 pixels.
     var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 100);
-    
+
     // Render voice
     voice.draw(this.context, stave);
   }
@@ -238,11 +238,11 @@ function tryGuess(num) {
     points = Math.max(points - 1, 0);
   }
   $("#gamepoints").text(points);
-  
+
 }
 
 function nextCard() {
-  var first = Math.floor(Math.random() * 33); 
+  var first = Math.floor(Math.random() * 33);
   good_answer = Math.floor(Math.random() * guesses.length);
   notesdraw.drawInterval(getNote(first), getNote(first + good_answer));
 }
@@ -273,7 +273,7 @@ function startGame() {
     tryGuess(button.num);
   }));
   countdown = 100;
-  game_interval = setInterval(gameStep, 10)
+  game_interval = setInterval(gameStep, 1000)
   points = 0;
 
   nextCard();
