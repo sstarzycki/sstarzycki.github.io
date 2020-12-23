@@ -275,6 +275,7 @@ function startGame() {
   countdown = 100;
   game_interval = setInterval(gameStep, 1000)
   points = 0;
+  $("#gamepoints").text(points);
 
   nextCard();
 }
