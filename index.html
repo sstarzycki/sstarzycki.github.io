@@ -1,1 +1,111 @@
-Test
+<head>
+  <title>Music thoery training games</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/3.0.9/vexflow-debug.js" integrity="sha512-lKd1a91LRkmZa8zZUEdjzgepWZpue8mVl5ikn1Itf1nQoNQsnzuEMbAQJz6C/dVYSw63GFYo+t0M+bCnLZf/Sg==" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css">
+  <script src="guess.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Music theory games</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="d-flex justify-content-center p-2">
+          <div id="backgroup" class="col-sm text-right d-none" >
+           <button id="backbutton" type="button" class="btn btn-default" aria-label="Back">
+             <img src="/node_modules/bootstrap-icons/icons/arrow-left.svg" alt="" width="32" height="32" title="Bootstrap">
+           </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm" >
+          <h1>Guess interval</h1>
+        </div>
+        <div id="timergroup" class="col-sm text-right d-none" >
+          <h5 class="text-dark">Countdown: <span id="gametimer">100</span></h5>
+        </div>
+        <div id="pointsgroup" class="col-sm text-right d-none" >
+          <h5 class="text-warning">Points: <span id="gamepoints">0</span></h5>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center p-2">
+        <div id="game" class="d-none">
+          <div id="notescanvas"></div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div id="instructions" >
+          <h2>Choose intervals that you would like to train (all enabled) and press start</h2>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center p-2">
+        <div id="intervalbuttons">
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="Unison">
+              <button id="i0button" type="button" class="btn btn-secondary">P1</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Second">
+              <button id="i1button" type="button" class="btn btn-secondary">m2</button>
+              <button id="i2button" type="button" class="btn btn-secondary">M2</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Third">
+              <button id="i3button" type="button" class="btn btn-secondary">m3</button>
+              <button id="i4button" type="button" class="btn btn-secondary">M3</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Fourth">
+              <button id="i5button" type="button" class="btn btn-secondary">P4</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Augumented fourt">
+              <button id="i6button" type="button" class="btn btn-secondary">A4/d6</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Fifth">
+              <button id="i7button" type="button" class="btn btn-secondary">P5</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Sixth">
+              <button id="i8button" type="button" class="btn btn-secondary">m6</button>
+              <button id="i9button" type="button" class="btn btn-secondary">M6</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Seventh">
+              <button id="i10button" type="button" class="btn btn-secondary">m7</button>
+              <button id="i11button" type="button" class="btn btn-secondary">M7</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Eight">
+              <button id="i12button" type="button" class="btn btn-secondary">P8</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center p-2">
+        <button id="deselectallbutton" type="button" class="btn
+                    btn-secondary">Deselect all</button>
+      </div>
+      <div class="d-flex justify-content-center p-2">
+        <div id="startgroup" class="col-sm">
+            <button id="startbutton" type="button" class="btn
+              btn-primary btn-lg btn-block">Start</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <hr>
+
+    <footer>
+      <p>&copy; 2020 Szymon Starzycki</p>
+    </footer>
+  </div> <!-- /container -->
+</body>
+
