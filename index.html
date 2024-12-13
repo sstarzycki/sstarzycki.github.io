@@ -100,42 +100,42 @@
                 title: "Sample jeans 8236160b",
                 description: "Entirely common brown jeans that don't stand out but serve you well for long, model 8236160b",
                 price: "75 CHF",
-                image: "coke_can.png"
+                image: "blue_jeans.jpg"
             },
             {
                 id: "cinco",
                 title: "Sample jeans 46ccd7f2",
                 description: "Entirely common brown jeans that don't stand out but serve you well for long, model 46ccd7f2",
                 price: "5 CHF",
-                image: "coke_can.png"
+                image: "blue_jeans.jpg"
             },
             {
                 id: "SECHS",
                 title: "Sample jeans 42193767",
                 description: "Entirely common brown jeans that don't stand out but serve you well for long, model 42193767",
                 price: "25 CHF",
-                image: "coke_can.png"
+                image: "blue_jeans.jpg"
             },
             {
                 id: "SIEBEN",
                 title: "Sample jeans 398c8f34",
                 description: "Entirely common brown jeans that don't stand out but serve you well for long, model 398c8f34",
                 price: "51 CHF",
-                image: "coke_can.png"
+                image: "blue_jeans.jpg"
             },
             {
                 id: "ACHT",
                 title: "Sample jeans 6d446e2f",
                 description: "Entirely common brown jeans that don't stand out but serve you well for long, model 6d446e2f",
                 price: "27 CHF",
-                image: "coke_can.png"
+                image: "blue_jeans.jpg"
             },
             {
                 id: "banana",
                 title: "Sample jeans 62b40296",
                 description: "Entirely common but fashion banana color jeans, model 62b40296",
                 price: "100 CHF",
-                image: "coke_can.png"
+                image: "blue_jeans.jpg"
             }
         ];
 
@@ -158,7 +158,7 @@
             if (product) {
                 productDetails.innerHTML = `
                     <h2>${product.title}</h2>
-                    <img src="${product.image}" alt="${product.title}" />
+                    <img src="${product.image}" alt="${product.title}" with="200px" />
                     <p>${product.description}</p>
                     <h3>${product.price}</h3>
                     <button onclick="addToCart('${product.id}')">Add to Cart</button>
