@@ -3,58 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empty Coke Can - A Collector's Item!</title>
+    <title>Product Page</title>
     <style>
         body {
-            font-family: sans-serif;
+            display: flex;
+            font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
         }
-        header {
-            background-color: #f0f0f0;
+
+        #sidebar {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        #sidebar a {
+            display: block;
+            margin: 10px 0;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        #sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        #content {
+            flex: 1;
             padding: 20px;
+        }
+
+        .product {
             text-align: center;
         }
-        h1 {
-            margin: 0;
-        }
-        #product-image {
+
+        .product img {
             max-width: 100%;
             height: auto;
         }
-        #product-details {
-            padding: 20px;
-        }
-        .button {
-            background-color: #4CAF50;
+
+        .product button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
             color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
             border: none;
             cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Empty Coke Can</h1>
-    </header>
+    <div id="sidebar">
+        <!-- Product Links will be dynamically added here -->
+    </div>
 
-    <main>
-        <img id="product-image" src="coke_can.png" alt="Empty Coke Can"> 
-
-        <div id="product-details">
-            <h2>A Collector's Dream</h2>
-            <p>Own a piece of history! This empty Coke can is a rare find for any collector.</p>
-
-            <p>Price: 9.99CHF</p>
-
-            <button class="button">Buy Now</button>
+    <div id="content">
+        <div class="product" id="product-details">
+            <h2>Welcome!</h2>
+            <p>Select a product to view its details.</p>
         </div>
-    </main>
+    </div>
 
+    <script>
+        // Array of products
+        const products = [
+            {
+                id: "uno",
+                title: "Sample jeans fa74e6fb",
+                description: "Entirely common jeans that don't stand out but serve you well for long, model 62b40296",
+                price: "50 CHF",
+                image: "https://via.placeholder.com/300?text=uno"
+            },
+            {
+                id: "duo",
+                title: "Sample jeans 4b111a7d",
+                description: "Entirely common but exorbitantly expensive jeans, model 4b111a7d",
+                price: "500 CHF",
+                image: "https://via.placeholder.com/300?text=duo"
+            },
+            {
+                id: "tre",
+                title: "Sample jeans 5ebc610a",
+                description: "Entirely common black jeans that don't stand out but serve you well for long, model 5ebc610a",
+                price: "75 CHF",
+                image: "https://via.placeholder.com/300?text=tre"
+            },
+            {
+                id: "quattro",
+                title: "Sample jeans 8236160b",
+                description: "Entirely common brown jeans that don't stand out but serve you well for long, model 8236160b",
+                price: "75 CHF",
+                image: "https://via.placeholder.com/300?text=quattro"
+            },
+            {
+                id: "cinco",
+                title: "Sample jeans 46ccd7f2",
+                description: "Entirely common brown jeans that don't stand out but serve you well for long, model 46ccd7f2",
+                price: "5 CHF",
+                image: "https://via.placeholder.com/300?text=cinco"
+            },
+            {
+                id: "SECHS",
+                title: "Sample jeans 42193767",
+                description: "Entirely common brown jeans that don't stand out but serve you well for long, model 42193767",
+                price: "25 CHF",
+                image: "https://via.placeholder.com/300?text=SECHS"
+            },
+            {
+                id: "SIEBEN",
+                title: "Sample jeans 398c8f34",
+                description: "Entirely common brown jeans that don't stand out but serve you well for long, model 398c8f34",
+                price: "51 CHF",
+                image: "https://via.placeholder.com/300?text=SIEBEN"
+            },
+            {
+                id: "ACHT",
+                title: "Sample jeans 6d446e2f",
+                description: "Entirely common brown jeans that don't stand out but serve you well for long, model 6d446e2f",
+                price: "27 CHF",
+                image: "https://via.placeholder.com/300?text=ACHT"
+            },
+            {
+                id: "banana",
+                title: "Sample jeans 62b40296",
+                description: "Entirely common but fashion banana color jeans, model 62b40296",
+                price: "100 CHF",
+                image: "https://via.placeholder.com/300?text=banana"
+            }
+        ];
+
+        // References to DOM elements
+        const sidebar = document.getElementById('sidebar');
+        const productDetails = document.getElementById('product-details');
+
+        // Function to load product details based on URL hash
+        function loadProductFromHash() {
+            const params = new URLSearchParams(window.location.hash.substring(1));
+            const productId = params.get('id');
+            if (productId) {
+                loadProduct(productId);
+            }
+        }
+
+        // Function to load product details
+        function loadProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                productDetails.innerHTML = `
+                    <h2>${product.title}</h2>
+                    <img src="${product.image}" alt="${product.title}" />
+                    <p>${product.description}</p>
+                    <h3>${product.price}</h3>
+                    <button onclick="addToCart('${product.id}')">Add to Cart</button>
+                `;
+            }
+        }
+
+        // Function to add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`${product.title} has been added to your cart!`);
+            }
+        }
+
+        // Populate the sidebar with product links
+        products.forEach(product => {
+            const link = document.createElement('a');
+            link.href = `#?id=${product.id}`;
+            link.textContent = product.title;
+            sidebar.appendChild(link);
+        });
+
+        // Load product on hash change
+        window.addEventListener('hashchange', loadProductFromHash);
+
+        // Load initial product if hash is present
+        loadProductFromHash();
+    </script>
 </body>
 </html>
