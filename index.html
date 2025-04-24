@@ -166,7 +166,7 @@
                 id: "karcher_nozzle",
                 title: "Kärcher Round brush set, steam cleaner nozzle (SC5)",
                 description: "The round brush set contains two black and two yellow round brushes. Ideal for different locations. For example, one colour can be used for use in the bathroom and the other for cleaning tasks in the kitchen. The flexible bristles of the steam brush do almost every job reliably and confidently.",
-                price: "40 CHF",
+                price: "45 CHF",
                 image: "karcher_nozzle.jpeg"
             }
         ];
@@ -190,19 +190,47 @@
             if (product) {
                 productDetails.innerHTML = `
                     <h2>${product.title}</h2>
-                    <img src="${product.image}" alt="${product.title}" with="200px" />
+                    <img src="${product.image}" alt="${product.title}" width="200px" />
                     <p>${product.description}</p>
                     <h3>${product.price}</h3>
                     <button onclick="addToCart('${product.id}')">Add to Cart</button>
                 `;
-            }
-        }
+        
+                // Add JSON-LD structured data
+                const structuredData = {
+                    "@context": "https://schema.org/",
+                    "@type": "Product",
+                    "sku": product.id,
+                    "image": product.image,
+                    "name": product.title,
+                    "description": product.description,
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "MyBrand"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": product.price.split(" ")[0],
+                        "priceCurrency": "CHF",
+                        "availability": "https://schema.org/InStock",
+                        "itemCondition": "https://schema.org/NewCondition"
+                    }
+                };
+
+        // Insert JSON-LD into the <head> or dynamically into the DOM
+        const scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.textContent = JSON.stringify(structuredData);
+        document.head.appendChild(scriptTag);
+    }
+}
+
 
         // Function to add product to cart
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (product) {
-                alert(`${product.title} has been added to your cart!`);
+                alert(`${product.title} has been added to your cart!`);e
             }
         }
 
