@@ -75,6 +75,28 @@
             background-color: #218838;
         }
     </style>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "sku": "karcher_nozzle",
+    "image": "karcher_nozzle.jpeg",
+    "name": "Kärcher Round brush set, steam cleaner nozzle (SC5)",
+    "description": "The round brush set contains two black and two yellow round brushes. Ideal for different locations. For example, one colour can be used for use in the bathroom and other areas.",
+    "brand": {
+        "@type": "Brand",
+        "name": "Kärcher"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "45",
+        "priceCurrency": "CHF",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+    }
+}
+</script>
+
 </head>
 <body>
 
@@ -195,7 +217,13 @@
                     <h3>${product.price}</h3>
                     <button onclick="addToCart('${product.id}')">Add to Cart</button>
                 `;
-        
+
+                // Remove any existing JSON-LD <script> tag
+                const existingScript = document.querySelector('script[type="application/ld+json"]');
+                if (existingScript) {
+                    existingScript.remove();
+                }
+
                 // Add JSON-LD structured data
                 const structuredData = {
                     "@context": "https://schema.org/",
